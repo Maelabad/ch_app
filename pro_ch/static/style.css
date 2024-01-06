@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(184, 202, 210);
+    
+}
+
+.container {
+    text-align: center;
+    margin: 0 auto; /* Centrage horizontal */
+    padding: 20px;
+    max-width: 600px; /* Largeur maximale pour éviter l'extension sur de petits écrans */
+}
+
+h1 {
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 6px; /* Réduisez l'espacement pour les appareils mobiles */
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    /* Styles spécifiques aux appareils Android avec une largeur d'écran maximale de 600px */
+    th, td {
+        font-size: 14px; /* Réduisez la taille de la police pour les petits écrans */
+        padding: 5px; /* Réduisez davantage l'espacement pour les petits écrans */
+    }
+}

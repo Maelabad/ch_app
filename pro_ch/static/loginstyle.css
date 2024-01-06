@@ -1,0 +1,87 @@
+
+.container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #a6d2e4;
+    margin: 10% auto;
+    padding: 40px;
+    border: 1px solid #ddd;
+    width: 22%;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+#email, #password, #firstname, #lastname, #username, #signupEmail, #signupPassword {
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+}
+
+#googleLoginBtn {
+    padding:  1px, 1px;
+    background-color: rgb(255, 255, 255);
+    color: #fff;
+}
+
+#googleLoginBtn:hover {
+    background-color: #d4dae9;
+}
+
+#showCreateAccountBtn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+#showCreateAccountBtn:hover {
+    background-color: #0056b3;
+}
+
+#showCreateAccountBtn, #closeModalBtn {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+#showCreateAccountBtn {
+    margin-top: 10px;
+}
+
+/* Media query pour une disposition adaptative sur les écrans plus petits */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 80%;
+    }
+}

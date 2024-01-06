@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="background-color: rgb(178, 189, 219);">
+    <div class="container-fluid mt-5" style="max-width: 65%;">
+        <div class="content">
+            <h2 class="text-center  mt-5">Résultats de la recherche</h2><br><br>
+            
+            {% for subject_item in data %}
+                <h2 class="text-center">Subject : {{ subject_item.subject }}</h2><br>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><h3>Titre</h3></th>
+                            <th class="text-center"><h3>Option</h3></th>                                                    
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for title in subject_item.titles %}
+                            <tr>
+                                <td class="text-center" style="font-size: 18px;">{{ title }}</td>
+
+                                <td class="text-center"><a href="{% url 'details_song' title %}" 
+                                        class="btn btn-success">Afficher</a></td>
+    
+
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <p>© 2023 DLBC Sénegal</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
