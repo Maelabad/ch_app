@@ -130,7 +130,7 @@ STATIC_URL = '/static/'
 
 #Ne jamais l'oublier
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "pro_ch/static/"),
+    os.path.join(BASE_DIR, "static"),
 ]
 
 
