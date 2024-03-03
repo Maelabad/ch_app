@@ -32,7 +32,7 @@ SECRET_KEY = '&aof_5l-qs=df&9y3yu!mcvx$dgh=@ltxv&fd*w*eci%ew11ve'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'song-db-3c0e.onrender.com']
 
 
 # Application definition
