@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body style="background-color: rgb(255, 255, 255);">
+<body style="background-color: rgb(226, 241, 255);">
     <div class="container-fluid mt-5" style="max-width: 65%;">
         <div class="content">
             <h2 class="text-center  mt-5">Résultats de la recherche</h2><br><br>
             
             {% for subject_item in data %}
-            <h2 class="text-center" style="margin-top: 50px;">Subject : {{ subject_item.subject }} </h2>
+                <h2 class="text-center" style="margin-top: 50px;">Subject : {{ subject_item.subject }} </h2> <br>
 
                     {% for title in subject_item.titles %}
                         <hr>
-                        <a href="{% url 'details_song' title %}" style="background-color: darkgrey;">         
+                        <a href="{% url 'sdetails_song' title %}" style="background-color: darkgrey;">         
                             <h4 class="text-center"  style="font-size: 24px;">{{ title }}</h4>
                         </a>
 

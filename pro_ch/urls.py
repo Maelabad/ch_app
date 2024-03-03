@@ -15,14 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 import simples_pages
-from pro_ch.views import acceuil
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', acceuil, name='acceuil'),
-    path('list/', include("simples_pages.urls")),
+    #path('admin/', admin.site.urls),
+    path('', include("simples_pages.urls")),
     path('signed/', include("signed_user.urls")),
 ]
-
-urlpatterns += staticfiles_urlpatterns()

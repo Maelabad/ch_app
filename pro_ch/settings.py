@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+
+# Charger les variables d'environnement depuis le fichier .env
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '&aof_5l-qs=df&9y3yu!mcvx$dgh=@ltxv&fd*w*eci%ew11ve'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -130,8 +136,14 @@ STATIC_URL = '/static/'
 
 #Ne jamais l'oublier
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "pro_ch/static/"),
 ]
+
+
+# from simples_pages.models import User
+
+AUTH_USER_MODEL = 'signed_user.User'
+
 
 
 

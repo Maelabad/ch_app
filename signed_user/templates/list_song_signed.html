@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Interface</title>
+    <!-- Incluez des liens vers vos fichiers CSS ici -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="background-color: rgb(255, 255, 255);">
+
+    <div class="container-fluid mt-5" style="max-width: 65%; flex: 1;">
+        <div class="content">
+
+            <div  style="    display: flex;
+            align-items: center;justify-content: center; height: 10vh; /* Ajustez la hauteur en fonction de vos besoins */">
+                <a href="{% url 'sadd_song' %}" 
+                class="btn btn-success" style="width: 600px; font-size: 24px;">Ajouter une chanson</a>
+
+            </div>
+
+    
+            <h2 class="text-center mt-3">Recherche</h2> <br> <br>
+
+            <form action="{% url 'ssearch_song' %}" method="get" class="mb-3">
+                <div class="input-group">
+                    <input type="text" name="query" class="form-control" placeholder="Rechercher un titre">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary">
+                            <img src="{% static 'images/search.png' %}" width="16px" height="12px" alt="Mon image">
+                        </button>
+                    </div>
+                </div>
+            </form> <br>
+    
+            {% for subject_item in data %}
+                <h2 class="text-center" style="margin-top: 50px;">Subject : {{ subject_item.subject }} </h2> <br>
+
+                    {% for title in subject_item.titles %}
+                        <hr>
+                        <a href="{% url 'sdetails_song' title %}" style="background-color: darkgrey;">         
+                            <h4 class="text-center"  style="font-size: 24px;">{{ title }}</h4>
+                        </a>
+
+                    {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer le message de l'URL
+            const params = new URLSearchParams(window.location.search);
+            const message = params.get('message');
+    
+            // Vérifier si un message est présent
+            if (message) {
+                // Déterminer le type d'icône en fonction du message
+                let iconType = 'info'; // par défaut, icône d'information
+    
+                // Vérifier si le message indique un succès ou un échec
+                if (message.includes('avec succès')) {
+                    iconType = 'success'; // icône de succès
+                } else if (message.includes('erreur')) {
+                    iconType = ' '; // icône d'erreur
+                }
+    
+                // Afficher le message dans un popup SweetAlert2 avec l'icône appropriée
+                Swal.fire({
+                    icon: iconType, // icône du popup
+                    title: 'Message', // titre du popup
+                    text: message, // contenu du popup
+                    timer: 8000 // temps en millisecondes (ici 5 secondes)
+                });
+            }
+        });
+    </script>
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

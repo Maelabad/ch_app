@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>song</title>
+    <!-- Liens vers les fichiers CSS Bootstrap et votre propre fichier CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(184, 202, 210);
+        }
+        
+        .container {
+            text-align: center;
+            margin: 0 auto; /* Centrage horizontal */
+            padding: 20px;
+            max-width: 800px; /* Largeur maximale pour éviter l'extension sur de petits écrans */
+        }
+
+        @media only screen and (max-width: 600px) {
+            /* Styles spécifiques aux appareils Android avec une largeur d'écran maximale de 600px */
+            th, td {
+                font-size: 14px; /* Réduisez la taille de la police pour les petits écrans */
+                padding: 5px; /* Réduisez davantage l'espacement pour les petits écrans */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h2>Titre : {{ data.title }}</h2><br>
+            <h2>Theme : {{ data.subject }} </h2> <br>
+
+            <!-- Lien de téléchargement pour le PDF -->
+            <div>
+                <a href="{{ data.url }}" download="{{ data.title }}.pdf" class="btn btn-primary" style="font-size: 24px; margin-bottom: 10px;">Télécharger le PDF</a>
+            </div>
+            
+            <br><br>
+            <!-- Affichage du PDF dans un iframe -->
+            <div class="embed-responsive embed-responsive-1by1">
+                <iframe class="embed-responsive-item"  src="{{ data.url }}"></iframe>
+            </div>
+
+  
+            
+
+        </div>
+
+        <div class="mt-5" style="display: flex;
+        align-items: center;justify-content: center; height: 10vh; /* Ajustez la hauteur en fonction de vos besoins */">
+
+            <a href="{% url 'smodify_song' title=data.title subject=data.subject %}" 
+                class="btn btn-success" style="width: 600px; font-size: 24px;">Modifier</a>
+        </div>
+        
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3">
+        <div class="container text-center">
+            <p>© 2023 DLBC Sénegal</p>
+        </div>
+    </footer>
+
+
+    <!-- Liens vers les fichiers JavaScript Bootstrap et jQuery (optionnels) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

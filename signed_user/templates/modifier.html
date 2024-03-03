@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de modification</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(184, 202, 210);
+        }
+        
+        .container {
+            text-align: center;
+            margin: 0 auto; /* Centrage horizontal */
+            padding: 20px;
+            max-width: 800px; /* Largeur maximale pour éviter l'extension sur de petits écrans */
+        }
+
+        @media only screen and (max-width: 600px) {
+            /* Styles spécifiques aux appareils Android avec une largeur d'écran maximale de 600px */
+            th, td {
+                font-size: 14px; /* Réduisez la taille de la police pour les petits écrans */
+                padding: 5px; /* Réduisez davantage l'espacement pour les petits écrans */
+            }
+        }
+
+        #autreThemeChanson {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="content">
+
+            <h2>Formulaire de modification</h2>
+
+            <form action="#" method="post" enctype="multipart/form-data" class="mt-5">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="titreChanson">Titre de la chanson:</label>
+                    <input type="text" class="form-control" id="titreChanson" name="titreChanson" value="{{ data.title }}" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="themeChanson">Thème de la chanson:</label>
+                    <select class="form-control" id="themeChanson" name="themeChanson" onchange="checkAutreTheme(this.value)" required>
+                        <option value="default" selected>{{ data.subject }}</option>
+                        <option value="autre">Autre...</option>
+                        {% for theme in themes %}
+                            <option value="{{ theme }}">{{ theme }}</option>
+                        {% endfor %}
+                        <option value="autre">Autre...</option>
+                    </select>
+                </div>
+        
+                <button type="submit" class="btn btn-primary">Soumettre</button>
+        
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        function checkAutreTheme(selectedValue) {
+            //var autreThemeChanson = document.getElementById("autreThemeChanson");
+            var selectElement = document.getElementById("themeChanson");
+            
+            if (selectedValue === "autre") {
+                var nouveauTheme = prompt("Entrez un nouveau thème :");
+                if (nouveauTheme !== null) {
+
+                    selectElement.options[1].value = nouveauTheme;
+                    selectElement.options[1].text = nouveauTheme;
+                } else {
+                    document.getElementById("themeChanson").value = ""; // Remet à zéro la sélection si l'utilisateur annule
+                }
+            } 
+        }
+        /*
+        function submitForm() {
+            var autreThemeValue = document.getElementById("autreThemeChanson").value;
+            // Faites quelque chose avec la valeur saisie, par exemple l'envoyer côté serveur
+            console.log("Nouveau thème saisi : " + autreThemeValue);
+        } */
+    </script>
+
+    <!-- Liens vers les fichiers JavaScript Bootstrap et jQuery (optionnels) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -7,12 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
-<body style="background-color: rgb(178, 189, 219);">
+<body style="background-color: rgb(255, 255, 255);">
 
     <div class="container-fluid mt-5" style="max-width: 65%; flex: 1;">
         <div class="content">
+
+            <div  style="    display: flex;
+            align-items: center;justify-content: center; height: 10vh; /* Ajustez la hauteur en fonction de vos besoins */">
+                <a href="../../signed/authentication" 
+                class="btn btn-success" style="width: 600px; font-size: 24px;">Se connecter</a>
+
+            </div>
+
             <h1 class="text-center d-sm-block d-md-none">Bienvenue</h1> <br>
-    
+
             <h2 class="text-center">Recherche</h2> <br> <br>
 
             <form action="{% url 'search_song' %}" method="get" class="mb-3">
@@ -27,25 +35,16 @@
             </form> <br>
     
             {% for subject_item in data %}
-                <h2 class="text-center">Subject : {{ subject_item.subject }} </h2> <br>
 
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="text-center"><h3>Titre</h3></th>
-                            <th scope="col" class="text-center"><h3>Option</h3></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for title in subject_item.titles %}
-                            <tr>
-                                <td class="text-center" style="font-size: 18px;">{{ title }}</td>
-                                <td class="text-center"><a href="{% url 'details_song' title %}" 
-                                    class="btn btn-success">Afficher</a></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <h2 class="text-center" style="margin-top: 50px;">Subject : {{ subject_item.subject }} </h2>
+
+                    {% for title in subject_item.titles %}
+                        <hr>
+                        <a href="{% url 'details_song' title %}" style="background-color: rgb(43, 115, 172);">         
+                            <h4 class="text-center"  style="font-size: 24px;">{{ title }}</h4>
+                        </a>
+
+                    {% endfor %}
             {% endfor %}
         </div>
     </div>
