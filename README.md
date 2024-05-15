@@ -1,2 +1,2 @@
 # ch_app
-An app for the choir song
+A Django app for the choir song
